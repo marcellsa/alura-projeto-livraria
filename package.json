@@ -1,0 +1,21 @@
+{
+  "name": "alura-projeto-livraria",
+  "version": "1.0.0",
+  "description": "Exercício de Node e Express da escola Alura - API para a livraria",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.4.2"
+  }
+}
