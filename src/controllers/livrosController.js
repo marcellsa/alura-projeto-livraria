@@ -52,7 +52,7 @@ class LivroController {
 
   static excluirLivro = async (req, res) => {
     const { id } = req.params;
-    
+
     try {
       const livroExcluido = await Livro.findByIdAndDelete(id);
 
