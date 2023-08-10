@@ -6,7 +6,7 @@ class LivroController {
       const listaDeLivros = await Livro.find({});
       res.status(200).json(listaDeLivros);
     } catch (err) {
-      res.status(500).json({ error: err.message });
+      res.status(500).json({ message: 'Erro interno!' });
     }
   };
 
@@ -20,7 +20,7 @@ class LivroController {
         res.status(404).json({ message: 'Livro não encontrado.' });
       }
     } catch (err) {
-      res.status(500).send({ message: err.message });
+      res.status(500).send({ message: 'Erro interno!' });
     }
   };
 
@@ -30,7 +30,7 @@ class LivroController {
       await livro.save();
       res.status(201).json({ message: 'Livro cadastrado com sucesso' });
     } catch (err) {
-      res.status(500).send({ message: err.message });
+      res.status(500).send({ message: 'Erro interno!' });
     }
   };
 
