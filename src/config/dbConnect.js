@@ -1,10 +1,10 @@
-import 'dotenv/config';
-import mongoose from 'mongoose';
+import "dotenv/config";
+import mongoose from "mongoose";
 
-const username = process.env.DB_USER;
-const password = process.env.DB_PASSWORD;
+const DBUSER = process.env.DB_USER;
+const DBPASSWORD = process.env.DB_PASSWORD;
 
-mongoose.connect(`mongodb+srv://${username}:${password}@myfirstcluster.eff6uhg.mongodb.net/alura-node-express`);
+mongoose.connect(`mongodb+srv://${DBUSER}:${DBPASSWORD}@myfirstcluster.eff6uhg.mongodb.net/alura-node-express`);
 
 const db = mongoose.connection;
 

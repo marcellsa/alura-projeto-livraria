@@ -1,4 +1,4 @@
-import Livro from '../models/Livro.js';
+import Livro from "../models/Livro.js";
 
 class LivroController {
   static listarLivros = async (req, res) => {
@@ -6,7 +6,7 @@ class LivroController {
       const listaDeLivros = await Livro.find({});
       res.status(200).json(listaDeLivros);
     } catch (err) {
-      res.status(500).json({ message: 'Erro interno!' });
+      res.status(500).json({ message: "Erro interno!" });
     }
   };
 
@@ -17,10 +17,10 @@ class LivroController {
       if (livro) {
         res.status(200).json(livro);
       } else {
-        res.status(404).json({ message: 'Livro não encontrado.' });
+        res.status(404).json({ message: "Livro não encontrado." });
       }
     } catch (err) {
-      res.status(500).send({ message: 'Erro interno!' });
+      res.status(500).send({ message: "Erro interno!" });
     }
   };
 
@@ -28,9 +28,9 @@ class LivroController {
     try {
       const livro = new Livro(req.body);
       await livro.save();
-      res.status(201).json({ message: 'Livro cadastrado com sucesso' });
+      res.status(201).json({ message: "Livro cadastrado com sucesso" });
     } catch (err) {
-      res.status(500).send({ message: 'Erro interno!' });
+      res.status(500).send({ message: "Erro interno!" });
     }
   };
 
@@ -41,12 +41,12 @@ class LivroController {
       const livroAtualizado = await Livro.findByIdAndUpdate(id, { $set: req.body });
 
       if (!livroAtualizado) {
-        res.status(404).json({ message: 'Ops! Livro não encontrado' });
+        res.status(404).json({ message: "Ops! Livro não encontrado" });
       } else {
-        res.status(201).json({ message: 'Livro atualizado!' });
+        res.status(201).json({ message: "Livro atualizado!" });
       }
     } catch (err) {
-      res.status(500).json({ message: 'Erro interno!' });
+      res.status(500).json({ message: "Erro interno!" });
     }
   };
 
@@ -57,12 +57,12 @@ class LivroController {
       const livroExcluido = await Livro.findByIdAndDelete(id);
 
       if (!livroExcluido) {
-        res.status(404).json({ message: 'Ops! Livro não encontrado.' });
+        res.status(404).json({ message: "Ops! Livro não encontrado." });
       } else {
-        res.status(201).json({ message: 'Livro excluído com sucesso!' });
+        res.status(201).json({ message: "Livro excluído com sucesso!" });
       }
     } catch (err) {
-      res.status(500).json({ message: 'Erro interno!' });
+      res.status(500).json({ message: "Erro interno!" });
     }
   };
 }
