@@ -1,40 +1,43 @@
 import Livro from "../models/Livro.js";
 
 class LivroController {
-  static listarLivros = async (req, res) => {
+
+  static listarLivros = async (req, res, next) => {
     try {
       const listaDeLivros = await Livro.find({});
       res.status(200).json(listaDeLivros);
     } catch (err) {
-      res.status(500).json({ message: "Erro interno!" });
+      next(err);
     }
   };
 
-  static listarLivroPorID = async (req, res) => {
+  static listarLivroPorID = async (req, res, next) => {
     const { id } = req.params;
+
     try {
       const livro = await Livro.findById(id);
+
       if (livro) {
         res.status(200).json(livro);
       } else {
         res.status(404).json({ message: "Livro não encontrado." });
       }
     } catch (err) {
-      res.status(500).send({ message: "Erro interno!" });
+      next(err);
     }
   };
 
-  static cadastrarLivro = async (req, res) => {
+  static cadastrarLivro = async (req, res, next) => {
     try {
       const livro = new Livro(req.body);
       await livro.save();
       res.status(201).json({ message: "Livro cadastrado com sucesso" });
     } catch (err) {
-      res.status(500).send({ message: "Erro interno!" });
+      next(err);
     }
   };
 
-  static atualizarLivro = async (req, res) => {
+  static atualizarLivro = async (req, res,next) => {
     const { id } = req.params;
 
     try {
@@ -46,11 +49,11 @@ class LivroController {
         res.status(201).json({ message: "Livro atualizado!" });
       }
     } catch (err) {
-      res.status(500).json({ message: "Erro interno!" });
+      next(err);
     }
   };
 
-  static excluirLivro = async (req, res) => {
+  static excluirLivro = async (req, res, next) => {
     const { id } = req.params;
 
     try {
@@ -62,7 +65,7 @@ class LivroController {
         res.status(201).json({ message: "Livro excluído com sucesso!" });
       }
     } catch (err) {
-      res.status(500).json({ message: "Erro interno!" });
+      next(err);
     }
   };
 }

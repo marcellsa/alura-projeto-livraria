@@ -1,3 +1,4 @@
+// Isso permite que o Dotenv faça as suas configurações de variáveis de ambiente
 import "dotenv/config";
 import mongoose from "mongoose";
 
