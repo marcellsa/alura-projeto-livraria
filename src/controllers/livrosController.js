@@ -5,7 +5,7 @@ class LivroController {
   static listarLivros = async (req, res, next) => {
     try {
       const listaDeLivros = await Livro.find({});
-      res.status(200).json(listaDeLivros);
+      res.status(200).send(listaDeLivros);
     } catch (err) {
       next(err);
     }
@@ -18,9 +18,9 @@ class LivroController {
       const livro = await Livro.findById(id);
 
       if (livro) {
-        res.status(200).json(livro);
+        res.status(200).send(livro);
       } else {
-        res.status(404).json({ message: "Livro não encontrado." });
+        res.status(404).send({ message: "Livro não encontrado." });
       }
     } catch (err) {
       next(err);
@@ -60,9 +60,9 @@ class LivroController {
       const livroExcluido = await Livro.findByIdAndDelete(id);
 
       if (!livroExcluido) {
-        res.status(404).json({ message: "Ops! Livro não encontrado." });
+        res.status(404).send({ message: "Ops! Livro não encontrado." });
       } else {
-        res.status(201).json({ message: "Livro excluído com sucesso!" });
+        res.status(201).send({ message: "Livro excluído com sucesso!" });
       }
     } catch (err) {
       next(err);
