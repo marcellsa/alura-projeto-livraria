@@ -1,10 +1,10 @@
-import Livro from "../models/Livro.js";
+import livros from "../models/Livro.js";
 
 class LivroController {
 
   static listarLivros = async (req, res, next) => {
     try {
-      const listaDeLivros = await Livro.find({});
+      const listaDeLivros = await livros.find({});
       res.status(200).send(listaDeLivros);
     } catch (err) {
       next(err);
@@ -15,7 +15,7 @@ class LivroController {
     const { id } = req.params;
 
     try {
-      const livro = await Livro.findById(id);
+      const livro = await livros.findById(id);
 
       if (livro) {
         res.status(200).send(livro);
@@ -29,7 +29,7 @@ class LivroController {
 
   static cadastrarLivro = async (req, res, next) => {
     try {
-      const livro = new Livro(req.body);
+      const livro = new livros(req.body);
       await livro.save();
       res.status(201).json({ message: "Livro cadastrado com sucesso" });
     } catch (err) {
@@ -41,7 +41,7 @@ class LivroController {
     const { id } = req.params;
 
     try {
-      const livroAtualizado = await Livro.findByIdAndUpdate(id, { $set: req.body });
+      const livroAtualizado = await livros.findByIdAndUpdate(id, { $set: req.body });
 
       if (!livroAtualizado) {
         res.status(404).json({ message: "Ops! Livro não encontrado" });
@@ -57,7 +57,7 @@ class LivroController {
     const { id } = req.params;
 
     try {
-      const livroExcluido = await Livro.findByIdAndDelete(id);
+      const livroExcluido = await livros.findByIdAndDelete(id);
 
       if (!livroExcluido) {
         res.status(404).send({ message: "Ops! Livro não encontrado." });
