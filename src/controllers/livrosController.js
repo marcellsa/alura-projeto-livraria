@@ -7,6 +7,7 @@ class LivroController {
     try {
       const listaDeLivros = await livros.find({})
         .populate("autor")
+        .populate("editora")
         .exec();
       res.status(200).send(listaDeLivros);
     } catch (err) {
