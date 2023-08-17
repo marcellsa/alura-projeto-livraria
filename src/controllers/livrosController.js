@@ -21,6 +21,7 @@ class LivroController {
     try {
       const livro = await livros.findById(id)
         .populate("autor", "nome")
+        .populate("editora", "nome")
         .exec();
 
       if (livro) {
