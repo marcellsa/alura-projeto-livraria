@@ -5,7 +5,7 @@ import NaoEncontrado from "../erros/NaoEncontrado.js";
 import RequisicaoIncorreta from "../erros/RequisicaoIncorreta.js";
 
 // eslint-disable-next-line no-unused-vars
-function errorsMiddleware(err, req, res, next){
+function manipuladorDeErros(err, req, res, next){
   if (err instanceof mongoose.Error.CastError) {
     new RequisicaoIncorreta().enviarResposta(res);
   } else if (err instanceof mongoose.Error.ValidationError) {
@@ -17,4 +17,4 @@ function errorsMiddleware(err, req, res, next){
   }
 }
 
-export default errorsMiddleware;
+export default manipuladorDeErros;
