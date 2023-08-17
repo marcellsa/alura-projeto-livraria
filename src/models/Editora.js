@@ -11,6 +11,9 @@ const editoraSchema = new mongoose.Schema(
       }
     },
     fundacao: { type: String}
+  },
+  {
+    versionKey: false
   }
 );
 
