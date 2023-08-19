@@ -7,7 +7,8 @@ class LivroController {
     try {
       const listaDeLivros = await livros.find({})
         .populate("autor")
-        .populate("editora");
+        .populate("editora")
+        .exec();
       res.status(200).send(listaDeLivros);
     } catch (err) {
       next(err);
@@ -20,7 +21,8 @@ class LivroController {
     try {
       const livro = await livros.findById(id)
         .populate("autor", "nome")
-        .populate("editora", "nome");
+        .populate("editora", "nome")
+        .exec();
 
       if (livro) {
         res.status(200).send(livro);
@@ -82,7 +84,8 @@ class LivroController {
         const listaDeLivros = await livros
           .find(busca)
           .populate("autor")
-          .populate("editora");
+          .populate("editora")
+          .exec();
 
         res.status(200).send(listaDeLivros);
       } else {
