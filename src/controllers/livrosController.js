@@ -5,11 +5,11 @@ class LivroController {
 
   static listarLivros = async (req, res, next) => {
     try {
-      const listaDeLivros = await livros.find({})
+      const listaDeLivros = livros.find({})
         .populate("autor")
-        .populate("editora")
-        .exec();
-      res.status(200).send(listaDeLivros);
+        .populate("editora");
+      req.resultado = listaDeLivros;
+      next();
     } catch (err) {
       next(err);
     }
