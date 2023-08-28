@@ -2,6 +2,7 @@
 import "dotenv/config";
 import mongoose from "mongoose";
 
+// Conexão com o banco de dados
 const DBUSER = process.env.DB_USER;
 const DBPASSWORD = process.env.DB_PASSWORD;
 
