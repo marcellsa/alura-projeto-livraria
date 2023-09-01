@@ -1,0 +1,31 @@
+version: "3"
+services:
+  # Serviço MongoDB
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: examplepassword
+    networks:
+      - mynetwork
+
+  # Serviço da minha aplicação Node.js
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: livraria-alura
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://root:examplepassword@mongo:27017/seu_banco_de_dados
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

@@ -4,7 +4,7 @@ import { describe, test, expect, beforeEach, afterEach } from "@jest/globals";
 
 let server;
 beforeEach(() => {
-  const port = 3000;
+  const port = 4040;
   server = app.listen(port);
 });
 
