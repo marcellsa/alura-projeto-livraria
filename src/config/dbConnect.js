@@ -1,12 +1,11 @@
-// Isso permite que o Dotenv faça as suas configurações de variáveis de ambiente
+// Isso permite que o Dotenv configure as variáveis de ambiente
 import "dotenv/config";
 import mongoose from "mongoose";
 
 // Conexão com o banco de dados
-const DBUSER = process.env.DB_USER;
-const DBPASSWORD = process.env.DB_PASSWORD;
+const { DB_USER, DB_PASSWORD } = process.env;
 
-mongoose.connect(`mongodb+srv://${DBUSER}:${DBPASSWORD}@myfirstcluster.eff6uhg.mongodb.net/alura-node-express`);
+mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@myfirstcluster.eff6uhg.mongodb.net/alura-node-express`);
 
 const db = mongoose.connection;
 

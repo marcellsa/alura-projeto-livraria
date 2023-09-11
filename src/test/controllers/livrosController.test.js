@@ -8,7 +8,7 @@ const request = (url, method, data) => {
 
 describe( "Testando LivroController", () => {
 
-  test.only("Deve cadastra uma novo livro", async () => {
+  test.only("Deve cadastrar uma novo livro", async () => {
     const data = ({
       titulo: "Estrutura de Dados", 
       autor: "64de2f00925fa8433ca6d681",
